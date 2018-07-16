@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="moduleIndex" ng-controller="indexController" >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href='/assets/images/favicon.ico'>
+		<title>Sistema de Gestão de Trabalhos Acadêmicos (SIGTA)</title>
+		<link rel="stylesheet" media="screen" href='@routes.Assets.at("/stylesheets/vendor/materialize.css")'>
+		<link rel="stylesheet" href='@routes.Assets.at("/stylesheets/fonts/material-icons/material-icons.css")'>
+		<link rel="stylesheet" href='@routes.Assets.at("/stylesheets/styleIndex.css")'>
+	</head>
+
+	<body>
+		<main>
+			<div class="section no-pad-bot" id="index-banner">
+
+				<div class="container">
+					<div class="row">
+			  
+						<div class="col s6 offset-s3 z-depth-1" id="panell">
+						  <h5 id="title">Login Form</h5>
+						  <form name="formLoginSistem">
+			  
+						<div class="input-field col s12">
+								<input id="email" name="email" type="email" class="validate" ng-model="email" required>
+								<label for="email">Email</label>
+							</div>
+							<div class="input-field col s12">
+								<input id="senha" name="senha" type="password" class="validate" ng-model="senha" required>
+								<label for="email">Senha</label>
+							</div>
+					  <p>
+						  <input type="checkbox" id="remember"/>
+					  </p>
+					  <center>
+							<button style="margin:8px" class="btn-large waves-effect waves-light" ng-class="{'disabled':formLoginSistem.$invalid}" type="submit" name="action"  ng-click="loginSistema()">
+									Entrar
+							</button>					  
+						</center>
+					  
+					  </form>
+			  
+					  </div>
+					</div>
+			  
+				  </div>
+		</main>
+
+		<script src="/assets/javascripts/vendor/angular.min.js"></script>
+		<script src="/assets/javascripts/vendor/angular-route.min.js"></script>
+		<script src="/assets/javascripts/vendor/angular-cookies.min.js"></script>
+		<script src="/assets/javascripts/vendor/angular-md5.js"></script>
+		<script src="/assets/javascripts/vendor/jquery-3.2.1.min.js"></script>
+		<script src="assets/javascripts/vendor/materialize.js"></script>
+		<script src="/assets/javascripts/vendor/init.js"></script>
+		<script src="/assets/controller/indexController.js"></script>
+	</body>
+</html>

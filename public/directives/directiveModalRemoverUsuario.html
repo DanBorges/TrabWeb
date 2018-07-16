@@ -1,0 +1,32 @@
+<div>
+	<script type="text/ng-template" id="idModalRemoverUsuario">
+        <div class="modal-header text-center">
+		    <div class="pull-right">
+                <button type="button" ng-click="fechar()" class="close">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
+                </button>
+		    </div>
+            <div class="pull-left">
+                <h4 ng-show="{{objetoUsuario.ativo == 1}}">Remover Usuário</h4>
+				<h4 ng-show="{{objetoUsuario.ativo == 0}}">Ativar Usuário</h4>
+            </div>
+		</div>
+
+		<div class="modal-body " align="center">
+            <div class="row">
+                <form novalidate>
+					<span ng-show="{{objetoUsuario.ativo == 1}}">Deseja <b>remover</b> {{objetoUsuario.nome}} ?</span>
+					<span ng-show="{{objetoUsuario.ativo == 0}}">Deseja <b>ativar</b> {{objetoUsuario.nome}} ?</span>
+		        </form>
+		    </div>
+		</div>
+		<div class="modal-footer text-center">
+            <button class="btn btn-danger btn-width" ng-click="fechar()" >
+                Fechar
+            </button>
+            <button class="btn btn-success btn-width" ng-click="removerUsuario()" >
+                Confirmar
+            </button>
+        </div>
+	</script>
+</div>

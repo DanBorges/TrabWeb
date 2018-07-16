@@ -1,0 +1,102 @@
+<div class="container">
+  <section class="card-panel">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h4 class="teal-text text-lighten-1">GERENCIAMENTO DE USUÁRIOS</h4>
+      </div>
+      <div class="col s12 m6 l6 right-align ">
+        <a data-target="modalUsuario" ng-click="modalUsuario(null)" class="btn modal-trigger teal lighten-1" style="margin-top: 4%;">
+          <i class="material-icons">person_add</i>
+        </a>
+      </div>
+    </div>
+    <table class="responsive-table striped centered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Tipo de Usuário</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="usuario in usuariolist">
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.permissaoDescricao}}</td>
+          <td>
+            <a data-target="modalUsuario" ng-click="modalUsuario(usuario)" class="modal-trigger btn-floating sem-float orange">
+              <i class="material-icons">edit</i>
+            </a>
+          </td>
+          <td>
+            <a class="btn-floating sem-float red modal-trigger" ng-click="confirmarExclusao(usuario.id)">
+              <i class="material-icons">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<!-- ######################### MODAL USUARIO ##################################### -->
+<div id="modalUsuario" class="modal" style="height:450px!important">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h4 ng-if="tipoModal == 'add'" class="teal-text text-lighten-1">ADICIONAR NOVO USUÁRIO</h4>
+        <h4 ng-if="tipoModal == 'edit'" class="teal-text text-lighten-1">EDITAR USUÁRIO</h4>
+      </div>
+      <div class="col s12 m6 l6 right-align">
+          <a class="modal-action modal-close btn-flat red accent-1 waves-effect white-text waves-light"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+	  <div class="row">
+      <form name="novoUsuarioForm" id="novoUsuarioForm">
+        <div class="col s12 m6 l3">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" ng-model="usuarioObj.nome" required>
+        </div>
+        <div class="col s12 m6 l3">
+          <label for="senha">Senha</label>
+          <input ng-if="tipoModal == 'add'" id="senha" ng-model="usuarioObj.senha" type="password" required>
+          <input ng-if="tipoModal == 'edit'" placeholder="senha não alterada" id="senha" ng-model="usuarioObj.senha" type="password" required>
+        </div>
+        <div class="col s12 m6 l3">
+          <label for="repetirsenha">Repita a Senha</label>
+          <input ng-if="tipoModal == 'add'" id="repetirsenha" type="password" ng-model="usuarioObj.confirmarSenha" required>
+          <input ng-if="tipoModal == 'edit'" placeholder="senha não alterada" ng-model="usuarioObj.confirmarSenha" id="repetirsenha" type="password" required>
+        </div>
+        <div class="input-field col s12 m6 l3">
+          <label for="estado">E-mail</label>
+          <input id="estado" name="email" ng-model="usuarioObj.email" type="email" required>
+          <span class="msg error" style="font-size:10px; color: red" >Insira seu e-mail corretamente</span>
+          <span class="msg success"> </span>
+        </div>
+        <div class="input-field col s12 m6 l4">
+          <select id="selectUser" ng-model="usuarioObj.permissao" material-select watch>
+            <option ng-repeat="permissao in listapermissaoUsuario" value="{{permissao.codigo}}">{{permissao.descricao}}</option>
+          </select>
+          <label>Tipo de usuário</label>
+        </div>
+      </form>
+  	  </div>
+  	  <div class="modal-footer" style="padding: 52px 6px!important;">
+      	 <a ng-class="{'disabled':novoUsuarioForm.$invalid}" ng-if="tipoModal == 'add'" class="waves-effect waves-green btn teal" ng-click="cadastrarUsuario()">Adicionar</a>
+      	 <a ng-if="tipoModal == 'edit'" class="waves-effect waves-green btn teal" ng-click="editarUsuario()">Editar</a>
+   	  </div>
+   </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="DeleteUserModal" class="modal">
+  <div class="modal-content">
+    <h4>Excluir usuário</h4>
+    <p>Confirmar exclusão do usuário</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close btn-flat">Cancelar</a>
+    <a class="modal-action modal-close btn red" ng-click="excluirUsuario()">Confirmar</a>
+  </div>
+</div>

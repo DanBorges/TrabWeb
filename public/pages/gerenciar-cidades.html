@@ -1,0 +1,55 @@
+<div>
+  <section class="card-panel">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h4 class="left teal-text text-lighten-1">GERENCIAMENTO DE CIDADES</h4>
+      </div>
+      <div class="col s12 m6 l6 right-align">
+        <a data-target="modalCidade" ng-click="modalCidade(null)" class="btn modal-trigger teal lighten-1" style="margin-top: 4%;">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    </div>
+    <table class="responsive-table striped centered">
+      <thead>
+        <tr>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cidade in cidadelist">
+          <td>{{cidade.nome}}</td>
+          <td>{{cidade.estado}}</td>
+          <td>
+            <a data-target='modalCidade' ng-click="modalCidade(cidade)" class="btn-floating sem-float orange">
+              <i class="material-icons">edit</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<!-- ######################### MODAL CIDADE ##################################### -->
+<div id="modalCidade" class="modal">
+  <div class="modal-content">
+      <h4 ng-if="tipoModal == 'add'" class="teal-text text-lighten-1">ADICIONAR NOVA CIDADE</h4>
+      <h4 ng-if="tipoModal == 'edit'" class="teal-text text-lighten-1">EDITAR CIDADE</h4>
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <label for="nome">Nome Da Cidade</label>
+          <input id="nome" type="text" ng-model="cidade.nome">
+        </div>
+        <div class="col s12 m6 l6">
+          <label for="estado">Estado </label>
+          <input id="estado" type="text" ng-model="cidade.estado">
+        </div>
+      </div>
+      <div class="modal-footer">
+         <a ng-if="tipoModal == 'add'" class=" modal-action modal-close waves-effect waves-green btn teal" ng-click="cadastrarCidade()">Adicionar</a>
+         <a ng-if="tipoModal == 'edit'" class=" modal-action modal-close waves-effect waves-green btn teal" ng-click="editarCidade()">Editar</a>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="app" ng-controller="templateController">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href='/assets/images/favicon.ico'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="CIMTech">
+
+	<title>CIM INTEGRA</title>
+	<link rel="stylesheet" href="assets/stylesheets/vendor/materialize.css">
+	<link rel="stylesheet" href="assets/stylesheets/fonts/material-icons/material-icons.css">
+	<link rel="stylesheet" href="assets/stylesheets/vendor/c3.min.css">
+	<link rel="stylesheet" href="assets/stylesheets/style.css"/>
+	<link rel="stylesheet" href="assets/stylesheets/main.css">
+	<link rel="stylesheet" media="screen" href="assets/stylesheets/vendor/jquery-ui.min.css">
+	<link rel="stylesheet" href="assets/stylesheets/vendor/fullcalendar.css" />
+</head>
+
+<body>
+	<nav class="green darken-2" style="margin-bottom:30px">
+		<div class="nav-wrapper">
+			<a ng-click="redirectPages('/home')"><img class="logo brand-logo" src="assets/images/logo-cimintegra.png"></a>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+			
+			<ul id="nav-mobile" class="side-nav">
+				<li class="list-group-item clearfix">
+					<div class="row">
+						<div class="col s7 offset-s1 center black-text"><b>{{nomeUsuarioLogado}}</b></div>
+						<div class="col s3 offset-s1 center light-green lighten-5"><a class="black-text" ng-click="logoutSistema()">Sair</a></div>
+					</div>
+   				</li>
+			</ul>
+			
+			<ul id="nav" class="right hide-on-med-and-down">
+				<ul ng-if=permissaoUsuarioLogado==1 id="nav-mobile" class="right hide-on-med-and-down">
+					<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
+					<li ng-click="goToTiposTrabalhos()"><a>Ajustes Sistema</a></li>
+				</ul>
+
+				<ul id="nav" class="right hide-on-med-and-down">
+					<ul ng-if=permissaoUsuarioLogado==2 id="nav-mobile" class="right hide-on-med-and-down">
+						<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
+						<li ng-click="goToTrabalhos()"><a>Ajustes Sistema</a></li>
+        </ul>
+        
+        <ul id="nav" class="right hide-on-med-and-down">
+            <ul ng-if=permissaoUsuarioLogado==2 id="nav-mobile" class="right hide-on-med-and-down">
+              <li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
+          </ul>
+
+			</ul>
+		</div>
+	</nav>
+
+	<main ng-view>
+	</main>
+
+	<!-- jquery -->
+	<script src="assets/javascripts/vendor/jquery-3.2.1.min.js"></script>
+	<!-- angular -->
+	<script src="assets/javascripts/vendor/angular.min.js"></script>
+	<script src="assets/javascripts/vendor/angular-route.min.js"></script>
+	<script src="assets/javascripts/vendor/angular-cookies.min.js"></script>
+	<script src="assets/javascripts/vendor/angular-md5.js"></script>
+	<!-- <script src="assets/javascripts/vendor/angular-animate.min.js"></script> -->
+	<!-- jquery ui -->
+	<!-- <script src="assets/javascripts/vendor/jquery-ui.min.js"></script> -->
+	<!-- jquery autocomplete -->
+	<script src="assets/javascripts/vendor/jquery.autocomplete.js"></script>
+	<!-- materialize -->
+	<script src="assets/javascripts/vendor/materialize.js"></script>
+	<script src="assets/javascripts/vendor/angular-materialize.min.js"></script>
+	<!-- ui bootstrap -->
+	<!-- <script src="assets/javascripts/vendor/ui-bootstrap-tpls-0.13.3.min.js">
+	<script src="assets/javascripts/vendor/bootstrap.min.js"></script> -->
+	<!-- moment -->
+	<script src="assets/javascripts/vendor/moment.min.js"></script>
+	<!-- grafico -->
+	<script src="assets/javascripts/vendor/d3.js" charset="utf-8"></script> 
+	<script src="assets/javascripts/vendor/c3.js"></script>
+	<script src="assets/javascripts/vendor/topojson.v1.js"></script> 
+	<script src="assets/javascripts/vendor/jquery.blockUI.min.js"></script>
+
+	<!-- Controllers -->
+	<script src="assets/controller/app.js"></script>
+	<script src="assets/controller/routes.js"></script>
+
+	<script src="assets/controller/templateController.js"></script>
+	<script src="assets/controller/menuInicialController.js"></script>
+
+	<script src="assets/controller/homeController.js"></script>
+	<script src="assets/controller/subculturaController.js"></script>
+  <script src="assets/controller/usuariosController.js"></script>
+  <script src="assets/controller/tiposTrabalhosController.js"></script>
+	
+
+	<script src="assets/controller/services/userService.js"></script>
+	<script src="assets/controller/services/requestService.js"></script>
+	<script src="assets/controller/services/navService.js"></script>
+	<script src="assets/controller/services/analiseService.js"></script>
+  <script src="assets/controller/services/painelService.js"></script>
+
+
+	<!-- Utils -->
+	<script src="assets/javascripts/util/forceDate.js"></script>
+	<script src="assets/javascripts/util/forceInteger.js"></script>
+	<script src="assets/javascripts/util/forceNumber.js"></script>
+</body>
+
+</html>
