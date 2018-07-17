@@ -5,7 +5,10 @@ angular.module('moduleTiposTrabalhos', [])
      $('.modal').modal();
    });
    $scope.tiposTrabalhosList = [];
-   $scope.tipoTrabalhoObj = {};
+   $scope.tipoTrabalhoObj = {
+		   id: '',
+		   tipo_trabalho: ''
+   };
    
    findAllTiposTrabalhos();
    
@@ -23,17 +26,16 @@ angular.module('moduleTiposTrabalhos', [])
 		);
 	};
 	
-  $scope.tipoTrabalhoObj = {
-    tipoTrabalho: ''
-  };
 	
 	
 	$scope.cadastrarEditarTipoTrabalho = function() {
 		if($scope.formTipoTrabalho.$valid) {
 			$.blockUI({ message:  navService.getloading() });
 	        var tipoTrabalho = {
+	        		id: $scope.tipoTrabalhoObj.id,
 	        		tipoTrabalho: $scope.tipoTrabalhoObj.tipo_trabalho
 	              };
+	        $scope.tipoTrabalhoObj = $scope.tipoTrabalho;
 			requestService.cadastrarEditarTipoTrabalho(tipoTrabalho)
 				.then(function(response) {
 					$.unblockUI();
@@ -53,6 +55,8 @@ angular.module('moduleTiposTrabalhos', [])
 	};
 	
 	$scope.editarLinhaTipoTrabalho = function(obj){
+		console.log(obj);
+		$scope.tipoTrabalhoObj = {};
 		$scope.tipoTrabalhoObj.id = obj.id;
 		$scope.tipoTrabalhoObj.tipo_trabalho = obj.tipoTrabalho;
 

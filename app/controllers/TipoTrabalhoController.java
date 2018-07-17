@@ -28,9 +28,9 @@ public class TipoTrabalhoController extends Controller {
 
 		if(request.getId() != null) {
 			tipoTrabalho.setId(request.getId());
-		} else {
-			tipoTrabalho.setTipoTrabalho(request.getTipoTrabalho());
-		}
+		} 
+		tipoTrabalho.setTipoTrabalho(request.getTipoTrabalho());
+
 
 		boolean saveUpdate = false;
 		
