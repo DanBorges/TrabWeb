@@ -27,6 +27,8 @@ GET	 /templateController/usuarioLogado														controllers.TemplateControll
 
 #Tipo de Trabalho
 GET	 /tipoTrabalhoController/findAllTiposTrabalho               							controllers.TipoTrabalhoController.findAllTiposTrabalho()
+POST /tipoTrabalhoController/cadastrarEditarTipoTrabalho									controllers.TipoTrabalhoController.cadastrarEditarTipoTrabalho()
+
 
 # USUARIO
 GET	 /usuarioController/findAllPermissaoUsuario               								controllers.UsuarioController.findAllPermissaoUsuario()
@@ -34,8 +36,3 @@ GET	 /usuarioController/findAllUsuario														controllers.UsuarioControlle
 POST /usuarioController/cadastrarUsuario													controllers.UsuarioController.cadastrarUsuario()
 POST /usuarioController/editarUsuario														controllers.UsuarioController.editarUsuario()
 GET	 /usuarioController/excluirUsuario/:id													controllers.UsuarioController.excluirUsuario(id: Long)
-
-# CIDADE
-GET	 /cidadeController/findAllCidade														controllers.CidadeController.findAllCidade()
-POST /cidadeController/cadastrarCidade														controllers.CidadeController.cadastrarCidade()
-POST /cidadeController/editarCidade															controllers.CidadeController.editarCidade()

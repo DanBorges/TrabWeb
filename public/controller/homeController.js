@@ -1,9 +1,6 @@
 angular.module('moduleHome', [])
 
 .controller('homeController', function($scope, $http, requestService, userService, $location, navService) {
-
-
-	console.log(userService.getPermissao())
 	
 	$scope.acessarCultura = function(cultura_id){
 		$.blockUI({ message:  navService.getloading() });

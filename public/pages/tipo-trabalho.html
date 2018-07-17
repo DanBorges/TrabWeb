@@ -1,6 +1,14 @@
 <div class="container">
-  <h1> Pagina de tipos de trabalhos</h1>
-
+    <div class="row">
+      <div class="col s6">
+        <h4 class="left teal-text text-lighten-1">Tipo de Trabalho</h4>
+      </div>
+      <div class="col s6">
+        <a id="btnAdd" data-target='modalTipoTrabalho' ng-click="limparCamposModal()" modal class="modal-trigger btn right teal lighten-1" style="margin-top: 4%;">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+	</div>
     <table class="striped">
         <thead>
           <tr>
@@ -13,7 +21,11 @@
         <tbody>
           <tr ng-repeat="tipoTrabalho in tiposTrabalhosList">
             <td>{{tipoTrabalho.tipoTrabalho}}</td>
-            <td>Ediar</td>
+            <td>
+				<a ng-click="editarLinhaTipoTrabalho(tipoTrabalho)" data-target="modalTipoTrabalho" modal class="modal-trigger btn-floating sem-float red">
+					<i class="material-icons">mode_edit</i>
+				</a>
+			</td>
             <td>Excluir</td>
           </tr>
         </tbody>
@@ -21,14 +33,21 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="DeleteUserModal" class="modal">
-  <div class="modal-content">
-    <h4>Excluir usuário</h4>
-    <p>Confirmar exclusão do usuário</p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-action modal-close btn-flat">Cancelar</a>
-    <a class="modal-action modal-close btn red" ng-click="excluirUsuario()">Confirmar</a>
-  </div>
-</div>
+
+	<div id="modalTipoTrabalho" class="modal">
+		<div class="modal-content">
+			<h4 class="teal-text text-lighten-1">Trator</h4>
+			<form name="formTipoTrabalho" novalidate>
+				<div class="row">
+					<div class="col s12 m6 l6">
+						<label for="tipoTrabalho">Título</label>
+						<input id="tipoTrabalho" type="text" required ng-model = "tipoTrabalhoObj.tipo_trabalho">
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<a class=" modal-action modal-close waves-effect waves-green btn teal"  ng-click="cadastrarEditarTipoTrabalho()">Salvar</a>
+			</div>
+		</div>
+	</div>
       

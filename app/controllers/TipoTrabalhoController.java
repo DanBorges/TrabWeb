@@ -14,32 +14,40 @@ public class TipoTrabalhoController extends Controller {
 		return ok(Json.toJson(TipoTrabalho.findAllTiposTrabalho()));
 	}
 	
-	public static Result cadastrarTipoTrabalho(){
+	public static Result cadastrarEditarTipoTrabalho(){
+
+		
 
 		Form<TipoTrabalhoRequest> form = Form.form(TipoTrabalhoRequest.class);
 		form = form.bindFromRequest();
 		TipoTrabalhoRequest request = form.get();
-
+		
 		AbstractResponse response = null;
+		
+		TipoTrabalho tipoTrabalho = new TipoTrabalho();
 
-		if(TipoTrabalho.findByTipoTrabalho(request.getTipoTrabalho()) != null) {
-			response = new AbstractResponse(AbstractResponse.IconEnum.REMOVE.getDescricao(), AbstractResponse.TypeEnum.DANGER.getDescricao(),
-					 "Tipo do trabalho já existe");
+		if(request.getId() != null) {
+			tipoTrabalho.setId(request.getId());
 		} else {
-			TipoTrabalho tipoTrabalho = new TipoTrabalho();
 			tipoTrabalho.setTipoTrabalho(request.getTipoTrabalho());
-
-			try {
-				TipoTrabalho.save(tipoTrabalho);
-
-				response = new AbstractResponse(AbstractResponse.IconEnum.THUMBS_UP.getDescricao(), AbstractResponse.TypeEnum.SUCCESS.getDescricao(),
-						 "Tipo do Trabalho	 cadastrado com sucesso!");
-			} catch(Exception e) {
-
-				response = new AbstractResponse(AbstractResponse.IconEnum.REMOVE.getDescricao(), AbstractResponse.TypeEnum.DANGER.getDescricao(),
-						 "Erro interno do servidor. Tente novamente");
-			}
 		}
+
+		boolean saveUpdate = false;
+		
+		if(tipoTrabalho.getId() != null) {
+			saveUpdate = TipoTrabalho.update(tipoTrabalho);
+		} else {
+			saveUpdate = TipoTrabalho.save(tipoTrabalho);
+		}
+		
+		if(saveUpdate) {
+			response = new AbstractResponse(AbstractResponse.IconEnum.THUMBS_UP.getDescricao(), AbstractResponse.TypeEnum.SUCCESS.getDescricao(),
+					 "Informações cadastradas com Sucesso!");
+		} else {
+			response = new AbstractResponse(AbstractResponse.IconEnum.REMOVE.getDescricao(), AbstractResponse.TypeEnum.DANGER.getDescricao(),
+					 "Não foi possível efetuar cadastro!");
+		}
+		
 
 		return ok(Json.toJson(response));
 	}

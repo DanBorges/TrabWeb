@@ -8,9 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import play.db.ebean.Model;
+
 @Entity
 @Table(name="tipo_trabalho")
 public class TipoTrabalho extends Model {
+
+	private static final long serialVersionUID = 1706953222621057992L;
+
 	public static Finder<Long,TipoTrabalho> find = new Finder<Long,TipoTrabalho>(Long.class, TipoTrabalho.class);
 
 	@Id

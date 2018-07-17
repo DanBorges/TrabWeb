@@ -5,6 +5,7 @@ angular.module('moduleTiposTrabalhos', [])
      $('.modal').modal();
    });
    $scope.tiposTrabalhosList = [];
+   $scope.tipoTrabalhoObj = {};
    
    findAllTiposTrabalhos();
    
@@ -15,13 +16,50 @@ angular.module('moduleTiposTrabalhos', [])
 				console.log(response);
 				$.unblockUI();
 				  $scope.tiposTrabalhosList = response;
-				  console.log($scope.tiposTrabalhosList);
-				  console.log('Testeeeeeeeeeeeeeeeee');
 	    	}, function(error) {
 				$.unblockUI();
 	       		console.log("erro de requisicao", error);
 			}
 		);
+	};
+	
+  $scope.tipoTrabalhoObj = {
+    tipoTrabalho: ''
+  };
+	
+	
+	$scope.cadastrarEditarTipoTrabalho = function() {
+		if($scope.formTipoTrabalho.$valid) {
+			$.blockUI({ message:  navService.getloading() });
+	        var tipoTrabalho = {
+	        		tipoTrabalho: $scope.tipoTrabalhoObj.tipo_trabalho
+	              };
+			requestService.cadastrarEditarTipoTrabalho(tipoTrabalho)
+				.then(function(response) {
+					$.unblockUI();
+					findAllTiposTrabalhos();
+					Materialize.toast('Tipo de Trabalho cadastrado com Sucesso!', 800, 'rounded green accent-4');
+				}, function(error) {
+					$.unblockUI();
+					// alert("Erro no servidor");
+					console.log("erro de requisição", error);
+				}
+			);
+		} else {
+			$.unblockUI();
+			Materialize.toast('Alguns campos não foram preenchidos ou são inválido', 1000, 'rounded orange accent-3 black-text');
+			
+		}
+	};
+	
+	$scope.editarLinhaTipoTrabalho = function(obj){
+		$scope.tipoTrabalhoObj.id = obj.id;
+		$scope.tipoTrabalhoObj.tipo_trabalho = obj.tipoTrabalho;
+
+	};
+	
+	$scope.limparCamposModal = function(){
+		$scope.tipoTrabalhoObj = {};
 	};
  
 })

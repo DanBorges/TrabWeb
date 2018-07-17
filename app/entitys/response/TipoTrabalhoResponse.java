@@ -1,7 +1,9 @@
 package entitys.response;
 
-import models.TipoTrabalho;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import models.TipoTrabalho;
+@JsonIgnoreProperties
 public class TipoTrabalhoResponse {
 	
 	public TipoTrabalhoResponse(TipoTrabalho tipoTrabalho) {
