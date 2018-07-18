@@ -96,113 +96,6 @@ angular.module('requestService', [])
 		});
 	}
 
-/*************************Cidade******************************/
-
-	this.findAllCidades = function(){
-		return $http.get('/cidadeController/findAllCidade')
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-
-/*************************Cultura/Subcultura******************************/
-
-	this.findAllSubculturaByCulturaId = function(id_cultura){
-		return $http.get('/navegacaoController/findAllSubcultura/' + id_cultura)
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-	this.findAllSubcultura = function(){
-		return $http.get('/painelInfoGeraisController/findAllSubcultura')
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-	this.findAllCultura = function(){
-		return $http.get('/subculturaController/findAllCultura')
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-	this.findAllTabelaSubcultura = function(){
-		return $http.get('/subculturaController/findAllTabelaSubcultura')
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-	this.cadastrarSubcultura = function(obj){
-		return $http.post('/subculturaController/cadastrarSubcultura', obj)
-		.then(function(response) {
-			if (typeof response.data === 'object') {
-				return response.data;
-			} else {
-				// invalid response
-				return $q.reject(response.data);
-			}
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	}
-
-
-	this.cadastrarInfoGerais = function(obj) {
-		return $http.post('/painelInfoGeraisController/cadastrarEditarInfoGeraisPainel', obj)
-		.then(function(response) {
-			return response.data;
-		}, function(response) {
-			// something went wrong
-			return $q.reject(response.data);
-		});
-	};
-	
-
 
 
 
@@ -238,6 +131,9 @@ this.cadastrarEditarTipoTrabalho = function(obj){
 		return $q.reject(response.data);
 	});
 }
+
+
+
 
 
 }])

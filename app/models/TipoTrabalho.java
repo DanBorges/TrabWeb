@@ -22,6 +22,11 @@ public class TipoTrabalho extends Model {
 	@Column(name="tipo_trabalho")
 	private String tipoTrabalho;
 	
+	public static TipoTrabalho findById(Long id) {
+		
+		return find.byId(id);
+	}
+	
 	public static TipoTrabalho findByTipoTrabalho(String tipoTrabalho) {
 		return find.where().eq("tipo_trabalho", tipoTrabalho).findUnique();
 	}
@@ -47,6 +52,19 @@ public class TipoTrabalho extends Model {
 			tipoTrabalho.update();
 			return true;
 		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public static boolean remover(Long id) {
+		
+		try {
+			TipoTrabalho tipoTrabalho = TipoTrabalho.findById(id);
+			tipoTrabalho.delete();
+			return true;
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}

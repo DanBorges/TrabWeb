@@ -28,6 +28,9 @@ GET	 /templateController/usuarioLogado														controllers.TemplateControll
 #Tipo de Trabalho
 GET	 /tipoTrabalhoController/findAllTiposTrabalho               							controllers.TipoTrabalhoController.findAllTiposTrabalho()
 POST /tipoTrabalhoController/cadastrarEditarTipoTrabalho									controllers.TipoTrabalhoController.cadastrarEditarTipoTrabalho()
+GET	 /tipoTrabalhoController/excluirTipoTrabalho/:id										controllers.TipoTrabalhoController.excluirTipoTrabalho(id: Long)
+
+
 
 
 # USUARIO

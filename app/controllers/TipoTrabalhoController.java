@@ -16,8 +16,6 @@ public class TipoTrabalhoController extends Controller {
 	
 	public static Result cadastrarEditarTipoTrabalho(){
 
-		
-
 		Form<TipoTrabalhoRequest> form = Form.form(TipoTrabalhoRequest.class);
 		form = form.bindFromRequest();
 		TipoTrabalhoRequest request = form.get();
@@ -49,6 +47,30 @@ public class TipoTrabalhoController extends Controller {
 		}
 		
 
+		return ok(Json.toJson(response));
+	}
+	
+	public static Result excluirTipoTrabalho(Long tipoTrabalhoId) {
+
+		AbstractResponse response = null;
+		TipoTrabalho tipoTrabalho = TipoTrabalho.findById(tipoTrabalhoId);
+		
+		
+		if(tipoTrabalho != null) {
+			try {
+				TipoTrabalho.remover(tipoTrabalhoId);
+			
+
+				response = new AbstractResponse(AbstractResponse.IconEnum.THUMBS_UP.getDescricao(), AbstractResponse.TypeEnum.SUCCESS.getDescricao(),
+						 "Painel excluído com sucesso!");
+			} catch(Exception e) {
+				response = new AbstractResponse(AbstractResponse.IconEnum.REMOVE.getDescricao(), AbstractResponse.TypeEnum.DANGER.getDescricao(),
+						 "Erro interno do servidor. Tente novamente");
+			}
+		}
+		else{
+			return ok(Json.toJson(0));
+		}
 		return ok(Json.toJson(response));
 	}
 

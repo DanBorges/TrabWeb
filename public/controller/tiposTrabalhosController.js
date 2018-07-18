@@ -54,6 +54,7 @@ angular.module('moduleTiposTrabalhos', [])
 		}
 	};
 	
+	
 	$scope.editarLinhaTipoTrabalho = function(obj){
 		console.log(obj);
 		$scope.tipoTrabalhoObj = {};
