@@ -37,14 +37,16 @@
 				<ul ng-if=permissaoUsuarioLogado==1 id="nav-mobile" class="right hide-on-med-and-down">
 					<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
 					<li ng-click="goToTiposTrabalhos()"><a>Ajustes Sistema</a></li>
+					<li><a ng-click="goToUsuarios()">Usuários</a></li>
 					<li ng-click="logoutSistema()"><a>Sair</a></li>
 				</ul>
 
 				<ul id="nav" class="right hide-on-med-and-down">
 					<ul ng-if=permissaoUsuarioLogado==2 id="nav-mobile" class="right hide-on-med-and-down">
 						<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
-					 <li><a ng-click="redirectPages('/usuarios')">Usuários</a></li>
+					 <li><a ng-click="goToTrabalhos()">Cadastrar Trabalho</a></li>
 					 <li ng-click="logoutSistema()"><a>Sair</a></li>
+					 
         </ul>
         
         <ul id="nav" class="right hide-on-med-and-down">
@@ -94,6 +96,7 @@
 	<script src="assets/controller/homeController.js"></script>
   	<script src="assets/controller/usuariosController.js"></script>
   	<script src="assets/controller/tiposTrabalhosController.js"></script>
+  	<script src="assets/controller/trabalhoController.js"></script>
 	
 
 	<script src="assets/controller/services/userService.js"></script>

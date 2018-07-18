@@ -20,6 +20,9 @@ angular.module('moduleRoutes', [])
 	}).when('/tipo-trabalho', {
 		templateUrl : 'assets/pages/tipo-trabalho.html',
 		controller  : 'tiposTrabalhosController'
+	}).when('/trabalho', {
+		templateUrl : 'assets/pages/trabalho.html',
+		controller  : 'trabalhoController'
 	}).otherwise({
         redirectTo: "/"
   	});

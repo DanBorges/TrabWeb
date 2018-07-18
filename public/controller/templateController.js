@@ -52,16 +52,21 @@ angular.module('templateController',[])
 			Materialize.toast('Falha ao sair', 2000, 'rounded orange darken-2')
 		});
 	};
+	
+
+	$scope.goToUsuarios = function(){
+		$location.path('/usuarios');
+	};
 
 	$scope.goToTrabalhos = function(){
-		console.log('teste')
 		$location.path('/trabalho');
 	};
 	
 	$scope.goToTiposTrabalhos = function(){
-		console.log('teste')
 		$location.path('/tipo-trabalho');
 	};
+	
+	
 	
 
 })

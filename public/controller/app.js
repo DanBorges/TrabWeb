@@ -8,6 +8,7 @@ angular.module('app', [ 'userService',
 	'moduleHome',
 	'moduleUsuarios',
 	'moduleTiposTrabalhos',
+	'moduleTrabalho',
 	'ui.materialize'])
 
 .filter('unixtimeDateFilter', function () {

@@ -1,16 +1,62 @@
 <div class="container">
-  <h1> Pagina de trabalhos
+  <section class="card-panel">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h4 class="teal-text text-lighten-1">GERENCIAMENTO DE TRABALHOS</h4>
+      </div>
+      <div class="col s12 m6 l6 right-align ">
+        <a data-target="modalTrabalho" ng-click="modalTrabalho(null)" class="btn modal-trigger teal lighten-1" style="margin-top: 4%;">
+          <i class="material-icons">person_add</i>
+        </a>
+      </div>
+    </div>
+    <table class="responsive-table striped centered">
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Título do Trabalho</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="trabalho in trabalholist">
+          <td>{{trabalho.aluno}}</td>
+          <td>{{trabalho.titulo}}</td>
+          <td>
+            <a data-target="modalTrabalho" ng-click="modalTrabalho(trabalho)" class="modal-trigger btn-floating sem-float orange">
+              <i class="material-icons">edit</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<!-- ######################### MODAL USUARIO ##################################### -->
+<div id="modalTrabalho" class="modal" style="height:450px!important">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h4 ng-if="tipoModal == 'add'" class="teal-text text-lighten-1">ADICIONAR NOVO TRABALHO</h4>
+        <h4 ng-if="tipoModal == 'edit'" class="teal-text text-lighten-1">EDITAR TRABALHO</h4>
+      </div>
+      <div class="col s12 m6 l6 right-align">
+          <a class="modal-action modal-close btn-flat red accent-1 waves-effect white-text waves-light"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+	  <div class="row">
+      <form name="novoTrabalhoForm" id="novoTrabalhoForm">
+        <div class="col s12 m6 l3">
+          <label for="aluno">Aluno</label>
+          <input id="aluno" type="text" ng-model="trabalhoObj.aluno" required>
+        </div>
+        <div class="col s12 m6 l3">
+          <label for="titulo">Título</label>
+          <input id="titulo" ng-model="trabalhoObj.titulo" type="text" required>
+        </div>
+        
+      </form>
+  	  </div>
+   </div>
 </div>
 
-<!-- Modal Structure -->
-<div id="DeleteUserModal" class="modal">
-  <div class="modal-content">
-    <h4>Excluir usuário</h4>
-    <p>Confirmar exclusão do usuário</p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-action modal-close btn-flat">Cancelar</a>
-    <a class="modal-action modal-close btn red" ng-click="excluirUsuario()">Confirmar</a>
-  </div>
-</div>
-      

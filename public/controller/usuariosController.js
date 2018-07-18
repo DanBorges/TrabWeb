@@ -1,6 +1,6 @@
 angular.module('moduleUsuarios', [])
 
-.controller('usuariosController', function($scope, requestService, $timeout, md5, navService){
+.controller('usuariosController', function($scope, requestService, $timeout, md5){
   $(document).ready(function() {
      $('.modal').modal();
    });
@@ -13,7 +13,6 @@ angular.module('moduleUsuarios', [])
    };
 
    $scope.excluirUsuario = function() {
-    $.blockUI({ message:  navService.getloading() });
     requestService.excluirUsuario(auxIDUser)
       .then(function(response) {
         $.unblockUI();
@@ -35,7 +34,6 @@ angular.module('moduleUsuarios', [])
    findAllUsuarios();
    
    function findAllUsuarios() {
-    $.blockUI({ message:  navService.getloading() });
 	  requestService.findAllUsuarios()
 	    .then(function(response) {
         $.unblockUI();
@@ -47,7 +45,6 @@ angular.module('moduleUsuarios', [])
    };
    
   function findAllPermissaoUsuario() {
-    $.blockUI({ message:  navService.getloading() });
     requestService.findAllPermissaoUsuario()
       .then(function(response) {
         $.unblockUI();
@@ -72,7 +69,6 @@ angular.module('moduleUsuarios', [])
   $scope.cadastrarUsuario = function() {    
     if($scope.novoUsuarioForm.$valid && $scope.usuarioObj.permissao != undefined){
       if($scope.usuarioObj.confirmarSenha === $scope.usuarioObj.senha){
-        $.blockUI({ message:  navService.getloading() });
         var usuario = {
           nome: $scope.usuarioObj.nome,
           email: $scope.usuarioObj.email,
@@ -105,7 +101,6 @@ angular.module('moduleUsuarios', [])
     }
     // console.log($scope.usuarioObj.permissao);
     if($scope.usuarioObj.permissao != undefined){
-        $.blockUI({ message:  navService.getloading() });
 
     	 requestService.editarUsuario($scope.usuarioObj)
          .then(function(response) {
