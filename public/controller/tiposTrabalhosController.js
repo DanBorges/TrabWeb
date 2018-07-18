@@ -1,6 +1,6 @@
 angular.module('moduleTiposTrabalhos', [])
 
-.controller('tiposTrabalhosController', function($scope, requestService, $timeout, md5, navService){
+.controller('tiposTrabalhosController', function($scope, requestService, $timeout, md5,){
   $(document).ready(function() {
      $('.modal').modal();
    });
@@ -13,7 +13,6 @@ angular.module('moduleTiposTrabalhos', [])
    findAllTiposTrabalhos();
    
 	function findAllTiposTrabalhos() {
-		$.blockUI({ message:  navService.getloading() });
 		requestService.findAllTiposTrabalhos()
 	    	.then(function(response) {
 				console.log(response);
@@ -30,7 +29,6 @@ angular.module('moduleTiposTrabalhos', [])
 	
 	$scope.cadastrarEditarTipoTrabalho = function() {
 		if($scope.formTipoTrabalho.$valid) {
-			$.blockUI({ message:  navService.getloading() });
 	        var tipoTrabalho = {
 	        		id: $scope.tipoTrabalhoObj.id,
 	        		tipoTrabalho: $scope.tipoTrabalhoObj.tipo_trabalho

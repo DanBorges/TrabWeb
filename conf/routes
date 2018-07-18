@@ -31,8 +31,6 @@ POST /tipoTrabalhoController/cadastrarEditarTipoTrabalho									controllers.Tip
 GET	 /tipoTrabalhoController/excluirTipoTrabalho/:id										controllers.TipoTrabalhoController.excluirTipoTrabalho(id: Long)
 
 
-
-
 # USUARIO
 GET	 /usuarioController/findAllPermissaoUsuario               								controllers.UsuarioController.findAllPermissaoUsuario()
 GET	 /usuarioController/findAllUsuario														controllers.UsuarioController.findAllUsuario()

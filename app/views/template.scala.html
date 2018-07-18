@@ -35,22 +35,22 @@
 			
 			<ul id="nav" class="right hide-on-med-and-down">
 				<ul ng-if=permissaoUsuarioLogado==1 id="nav-mobile" class="right hide-on-med-and-down">
+					<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
 					<li ng-click="goToTiposTrabalhos()"><a>Ajustes Sistema</a></li>
 					<li ng-click="logoutSistema()"><a>Sair</a></li>
-					<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
 				</ul>
 
 				<ul id="nav" class="right hide-on-med-and-down">
 					<ul ng-if=permissaoUsuarioLogado==2 id="nav-mobile" class="right hide-on-med-and-down">
+						<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
 					 <li><a ng-click="redirectPages('/usuarios')">Usuários</a></li>
 					 <li ng-click="logoutSistema()"><a>Sair</a></li>
-						<li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
         </ul>
         
         <ul id="nav" class="right hide-on-med-and-down">
-            <ul ng-if=permissaoUsuarioLogado==2 id="nav-mobile" class="right hide-on-med-and-down">
+            <ul ng-if=permissaoUsuarioLogado==3 id="nav-mobile" class="right hide-on-med-and-down">
+             <li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
             <li ng-click="logoutSistema()"><a>Sair</a></li>
-              <li ng-click=""><a>{{nomeUsuarioLogado}}</a></li>
           </ul>
 
 			</ul>
@@ -91,19 +91,14 @@
 	<script src="assets/controller/routes.js"></script>
 
 	<script src="assets/controller/templateController.js"></script>
-	<script src="assets/controller/menuInicialController.js"></script>
-
 	<script src="assets/controller/homeController.js"></script>
-	<script src="assets/controller/subculturaController.js"></script>
-  <script src="assets/controller/usuariosController.js"></script>
-  <script src="assets/controller/tiposTrabalhosController.js"></script>
+  	<script src="assets/controller/usuariosController.js"></script>
+  	<script src="assets/controller/tiposTrabalhosController.js"></script>
 	
 
 	<script src="assets/controller/services/userService.js"></script>
 	<script src="assets/controller/services/requestService.js"></script>
-	<script src="assets/controller/services/navService.js"></script>
-	<script src="assets/controller/services/analiseService.js"></script>
-  <script src="assets/controller/services/painelService.js"></script>
+
 
 
 	<!-- Utils -->
