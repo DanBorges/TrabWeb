@@ -13,8 +13,7 @@ GET     /assets/*file               														controllers.Assets.at(path="/p
 
 # Home page
 GET     /        		                    												controllers.IndexController.index()
-GET     /cim_integra                           												controllers.IndexController.index()
-GET     /cim_integra/                         												controllers.IndexController.index()
+
 
 # Index
 POST	/indexController/logarSistema		 												controllers.IndexController.logarSistema()
