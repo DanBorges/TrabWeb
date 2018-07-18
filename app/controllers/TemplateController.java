@@ -6,7 +6,6 @@ import play.mvc.Result;
 import security.SigtaAuthenticator;
 import entitys.response.UsuarioResponse;
 
-//@Authenticated(CimIntegraAuthenticator.class)
 public class TemplateController extends AbstractController {
 	
 //	private static Map<Long,String> lista = new HashMap<Long, String>();

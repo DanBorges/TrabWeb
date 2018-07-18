@@ -4,7 +4,6 @@ import models.Usuario;
 import play.mvc.Controller;
 import security.SigtaAuthenticator;
 
-//@Authenticated(CimIntegraAuthenticator.class)
 public abstract class AbstractController extends Controller {
 
 //	protected final static DateTimeZone dtz = DateTimeZone.forID("America/Sao_Paulo");
